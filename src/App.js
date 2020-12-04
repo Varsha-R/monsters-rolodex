@@ -8,10 +8,15 @@ import './App.css';
 class App extends React.Component {
   constructor() {
     super();
+
     this.state = {
       monsters: [],
       searchField: ""
     };
+  }
+
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
   }
 
   componentDidMount() {
@@ -28,9 +33,10 @@ class App extends React.Component {
 
     return (
       <div className="App">   
+        <h1>Monsters Rolodex</h1>
         <SearchBox 
-          placeholder="search monsters"
-          handleChange={e => this.setState({ searchField: e.target.value })} />     
+          placeholder="Search monsters"
+          handleChange={this.handleChange} />     
         <CardList monsters={filteredMonsters} />
       </div>
     );
